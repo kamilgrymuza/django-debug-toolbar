@@ -1,14 +1,13 @@
-{% load i18n %}
 <table>
 	<thead>
 		<tr>
-			<th>{% trans "Setting" %}</th>
-			<th>{% trans "Value" %}</th>
+			<th>{{ _("Setting") }}</th>
+			<th>{{ _("Value") }}</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for var in settings.items|dictsort:"0" %}
-			<tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+		{% for var in settings.items() %} {# |dictsort("0") #}
+			<tr class="{{ loop.cycle('djDebugOdd','djDebugEven') }}">
 				<td>{{ var.0 }}</td>
 				<td><code>{{ var.1|pprint }}</code></td>
 			</tr>

@@ -1,14 +1,13 @@
-{% load i18n %}
 <div class="djDebugPanelTitle">
-	<a class="djDebugClose djDebugBack" href="">{% trans "Back" %}</a>
-	<h3>{% trans "SQL Selected" %}</h3>
+	<a class="djDebugClose djDebugBack" href="">{{ _("Back") }}</a>
+	<h3>{{ _("SQL Selected") }}</h3>
 </div>
 <div class="djDebugPanelContent">
 	<div class="scroll">
 		<dl>
-			<dt>{% trans "Executed SQL" %}</dt>
+			<dt>{{ _("Executed SQL") }}</dt>
 			<dd>{{ sql|safe }}</dd>
-			<dt>{% trans "Time" %}</dt>
+			<dt>{{ _("Time") }}</dt>
 			<dd>{{ duration }} ms</dd>
 		</dl>
 		{% if result %}
@@ -22,7 +21,7 @@
 			</thead>
 			<tbody>
 				{% for row in result %}
-					<tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+					<tr class="{{ loop.cycle('djDebugOdd','djDebugEven') }}">
 						{% for column in row %}
 							<td>{{ column|escape }}</td>
 						{% endfor %}
@@ -31,7 +30,7 @@
 			</tbody>
 		</table>
 		{% else %}
-			<p>{% trans "Empty set" %}</p>
+			<p>{{ _("Empty set") }}</p>
 		{% endif %}
 	</div>
 </div>

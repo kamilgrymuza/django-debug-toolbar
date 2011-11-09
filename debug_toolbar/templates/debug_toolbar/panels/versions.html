@@ -1,15 +1,13 @@
-{% load i18n %}
-
 <table>
 	<thead>
 		<tr>
-			<th>{% trans "Package" %}</th>
-			<th>{% trans "Version" %}</th>
+			<th>{{ _("Package") }}</th>
+			<th>{{ _("Version") }}</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for package, version in versions.iteritems %}
-			<tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+		{% for package, version in versions.iteritems() %}
+			<tr class="{{ loop.cycle('djDebugOdd','djDebugEven') }}">
 				<td>{{ package }}</td>
 				<td>{{ version }}</td>
 			</tr>
